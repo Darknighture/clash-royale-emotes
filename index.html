@@ -236,17 +236,15 @@ footer code{background:#eef1f8;padding:1.5px 5px;border-radius:5px;font-size:12p
 
 <main class="wrap">
   <div class="bar">
-    <div class="n" id="count"></div>
-    <div class="tip">数据源 emotes.csv · 图像与动画由游戏内 .sc 精灵重建 · 音效为游戏内原版 .ogg</div>
+    <div class="n" id="count">表情收录截止到2026年6月。</div>
+    <div class="tip"></div>
   </div>
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty" style="display:none">没有符合条件的表情，试试放宽筛选条件。</div>
 </main>
 
 <footer class="wrap">
-  <div>表情数据来自 <code>emotes.csv</code>（Name / Family / DateAvailable / Exclusive 等字段原样保留，家族名大小写/空格变体已合并分组）。
-  图像与动画由游戏内 <code>.sc</code> 精灵重建渲染（新版 SC2 格式素材已转换为 SC1 后渲染），
-  音效为游戏内原版 <code>.ogg</code> 资源、按需加载（点击卡片或 <code>🔊</code> 播放，工具栏可静音）。
+  <div>
   <span id="f-drop"></span></div>
 </footer>
 
@@ -330,8 +328,7 @@ audio.addEventListener('error', stopSfx);
   const ex = E.filter(e=>e.ex).length;
   const dated = E.filter(e=>e.d).length;
   document.getElementById('lead').textContent =
-    `按游戏内表情数据表 emotes.csv 整理的 ${E.length} 个表情，全部已用游戏内精灵文件重建出官方图像，`
-    + `其中 ${withAnim} 个可播放原始动画（鼠标悬停即播）、${withSfx} 个带游戏内原版音效。可按家族、年份、限定状态筛选。`;
+    ``;
   const S=[
     [E.length,"表情总数"],[withAnim,"可播放动画"],[withSfx,"含音效"],
     [fams.size,"涉及家族"],[years,"年份跨度"],[ex,"限定 / 绝版"],[dated,"有上线日期"]
@@ -340,7 +337,7 @@ audio.addEventListener('error', stopSfx);
     `<div class="stat${i===1||i===2?' warn':''}"><b>${v}</b><span>${l}</span></div>`).join('');
   const drop = META.droppedCount | 0;
   if(drop) document.getElementById('f-drop').textContent =
-    `CSV 中另有 ${drop} 条尚未公开素材的空占位行（无名称、无图像）未列入本页。`;
+    ``;
 })();
 
 /* ---------- 筛选控件 ---------- */
