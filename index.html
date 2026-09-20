@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>皇室战争 表情图鉴 · Clash Royale Emote Gallery</title>
+<title data-i18n="title">皇室战争 表情图鉴 · Clash Royale Emote Gallery</title>
 <style>
 :root{
   --bg:#f4f6fb; --bg2:#e9edf8;
@@ -198,17 +198,76 @@ dd{margin:0;color:var(--ink);word-break:break-all;font-family:ui-monospace,SFMon
 footer{border-top:1px solid var(--line);color:var(--ink3);font-size:12.5px;padding:22px 0 40px}
 footer code{background:#eef1f8;padding:1.5px 5px;border-radius:5px;font-size:12px;color:var(--ink2)}
 .empty{padding:60px 0;text-align:center;color:var(--ink3)}
+.grp{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.grp .tgl{border:none;border-radius:0;font-size:13px;padding:9px 11px}
+.grp .tgl + .tgl{border-left:1px solid var(--line)}
+.grp .tgl.on{font-weight:600}
 </style>
 </head>
 <body>
 
+<script>
+/* ---- 中 / EN 语言切换（在页面主脚本之前加载）---- */
+window.I18N = {"title":{"zh":"皇室战争 表情图鉴 · Clash Royale Emote Gallery","en":"Clash Royale Emote Gallery · All Emotes"},"h1":{"zh":"皇室战争 <em>全部表情</em> 图鉴","en":"Clash Royale <em>All Emotes</em> Gallery"},"hint":{"zh":"↓ 向下滚动浏览 · 悬停看动画 · 点击卡片查看完整数据并试听音效","en":"↓ Scroll to browse · hover to play the animation · click a card for full data and sound"},"search":{"zh":"搜索名称 / 家族 / 资源文件名…","en":"Search name / family / asset file…"},"famAll":{"zh":"全部家族","en":"All families"},"sortIdx":{"zh":"按游戏内序号","en":"By in-game index"},"sortDateDesc":{"zh":"日期：新 → 旧","en":"Date: new → old"},"sortDateAsc":{"zh":"日期：旧 → 新","en":"Date: old → new"},"sortName":{"zh":"名称 A → Z","en":"Name A → Z"},"sortFam":{"zh":"家族分组","en":"Group by family"},"tEx":{"zh":"★ 限定","en":"★ Exclusive"},"tExTip":{"zh":"仅看限定/绝版表情","en":"Exclusive / retired emotes only"},"own":{"zh":"默认拥有","en":"Default owned"},"ownTip":{"zh":"仅看开局默认拥有","en":"Only default-owned"},"snd":{"zh":"♫ 音效","en":"♫ Sound"},"sndTip":{"zh":"开关表情音效：点击卡片或 🔊 按钮时播放","en":"Toggle emote sound: plays when clicking a card or the 🔊 button"},"reset":{"zh":"重置","en":"Reset"},"langLabel":{"zh":"语言","en":"Language"},"countNote":{"zh":"表情收录截止到2026年6月。","en":"Emotes collected up to June 2026."},"empty":{"zh":"没有符合条件的表情，试试放宽筛选条件。","en":"No emotes match — try loosening the filters."},"prev":{"zh":"上一个 (←)","en":"Previous (←)"},"next":{"zh":"下一个 (→)","en":"Next (→)"},"sndReplay":{"zh":"重播音效 (S)","en":"Replay sound (S)"},"close":{"zh":"关闭 (Esc)","en":"Close (Esc)"},"stTotal":{"zh":"表情总数","en":"Emotes"},"stAnim":{"zh":"可播放动画","en":"With animation"},"stSfx":{"zh":"含音效","en":"With sound"},"stFams":{"zh":"涉及家族","en":"Families"},"stYears":{"zh":"年份跨度","en":"Years spanned"},"stEx":{"zh":"限定 / 绝版","en":"Exclusive / retired"},"stDated":{"zh":"有上线日期","en":"With release date"},"noAsset":{"zh":"素材未收录","en":"Assets not available"},"exTip":{"zh":"限定 / 绝版（Exclusive = true）","en":"Exclusive / retired (Exclusive = true)"},"offBadge":{"zh":"下架","en":"Unavailable"},"offTip":{"zh":"当前不可获得（Available = false）","en":"Currently unavailable (Available = false)"},"animTip":{"zh":"鼠标悬停播放原始动画","en":"Hover to play the original animation"},"sfxPlayTip":{"zh":"播放音效：{1}","en":"Play sound: {1}"},"sfxAria":{"zh":"播放音效","en":"Play sound"},"countEmotes":{"zh":"显示 <b>{1}</b> / {2} 个表情","en":"Showing <b>{1}</b> / {2} emotes"},"yes":{"zh":"✓ 是","en":"✓ Yes"},"no":{"zh":"— 否","en":"— No"},"noAssetLong":{"zh":"本地素材库未收录<br>该表情的精灵文件","en":"The local asset library does not include<br>this emote's sprite file"},"tgEx":{"zh":"★ 限定 / 绝版","en":"★ Exclusive / retired"},"tgOff":{"zh":"当前不可获得","en":"Currently unavailable"},"tgOwn":{"zh":"开局默认拥有","en":"Owned by default"},"tgShop":{"zh":"可上架出售","en":"Available for sale"},"tgCb":{"zh":"水晶背景","en":"Crystal background"},"noDate":{"zh":"日期未公开","en":"Date not public"},"playSfx":{"zh":"♫ 播放音效","en":"♫ Play sound"},"noSfx":{"zh":"♫ 音效未收录","en":"♫ Sound not available"},"dataName":{"zh":"数据名","en":"Data name"},"famKey":{"zh":"家族 Key","en":"Family key"},"date":{"zh":"上线日期","en":"Release date"},"index":{"zh":"索引","en":"Index"},"spriteFile":{"zh":"精灵文件","en":"Sprite file"},"sfxFile":{"zh":"音效文件","en":"Sound file"},"notIncluded":{"zh":"（未收录）","en":"(not included)"},"noImageNote":{"zh":"未显示图像：{1}。","en":"Image not shown: {1}."},"sndOn":{"zh":"♫ 音效","en":"♫ Sound"},"sndOff":{"zh":"♫ 静音","en":"♫ Muted"}};
+window.LANG = (function(){ try{ return localStorage.getItem('cr-lang')==='en'?'en':'zh'; }catch(e){ return 'zh'; } })();
+window.T = function(k){
+  var e = window.I18N[k]; if(!e) return '';
+  var s = (window.LANG === 'en' && e.en) ? e.en : e.zh;
+  if(s == null) s = '';
+  for(var i = 1; i < arguments.length; i++){
+    s = s.split('{' + i + '}').join(arguments[i]);
+  }
+  return s;
+};
+function applyI18n(){
+  document.title = T('title');
+  document.documentElement.lang = window.LANG === 'en' ? 'en' : 'zh-CN';
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    el.textContent = T(el.getAttribute('data-i18n'));
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+    el.innerHTML = T(el.getAttribute('data-i18n-html'));
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+    el.setAttribute('placeholder', T(el.getAttribute('data-i18n-ph')));
+  });
+  document.querySelectorAll('[data-i18n-title]').forEach(function(el){
+    el.setAttribute('title', T(el.getAttribute('data-i18n-title')));
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(function(el){
+    el.setAttribute('aria-label', T(el.getAttribute('data-i18n-aria')));
+  });
+  var z = document.getElementById('l-zh'), e2 = document.getElementById('l-en');
+  if(z) z.classList.toggle('on', window.LANG !== 'en');
+  if(e2) e2.classList.toggle('on', window.LANG === 'en');
+  if(typeof render === 'function') render();
+}
+function setLang(l){
+  window.LANG = l;
+  try{ localStorage.setItem('cr-lang', l); }catch(e){}
+  var lbEl = document.getElementById('lb');
+  var wasOpen = lbEl && lbEl.classList.contains('open');
+  applyI18n();
+  if(wasOpen){
+    try{ if(typeof cur !== 'undefined' && cur >= 0 && typeof openBy === 'function') openBy(cur); }catch(e){}
+  }
+}
+document.addEventListener('DOMContentLoaded', function(){
+  var z = document.getElementById('l-zh'), e2 = document.getElementById('l-en');
+  if(z) z.addEventListener('click', function(){ setLang('zh'); });
+  if(e2) e2.addEventListener('click', function(){ setLang('en'); });
+  applyI18n();
+});
+</script>
+
+
 <header class="hero">
   <div class="wrap">
     <div class="chip-top">CLASH ROYALE · <b>EMOTE GALLERY</b></div>
-    <h1>皇室战争 <em>全部表情</em> 图鉴</h1>
+    <h1 data-i18n-html="h1">皇室战争 <em>全部表情</em> 图鉴</h1>
     <p class="lead" id="lead"></p>
     <div class="stats" id="stats"></div>
-    <div class="hint">↓ 向下滚动浏览 · 悬停看动画 · 点击卡片查看完整数据并试听音效</div>
+    <div class="hint" data-i18n="hint">↓ 向下滚动浏览 · 悬停看动画 · 点击卡片查看完整数据并试听音效</div>
   </div>
 </header>
 
@@ -216,31 +275,32 @@ footer code{background:#eef1f8;padding:1.5px 5px;border-radius:5px;font-size:12p
   <div class="wrap">
     <label class="search">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#131a2e" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
-      <input id="q" type="search" placeholder="搜索名称 / 家族 / 资源文件名…" autocomplete="off">
+      <input id="q" type="search" data-i18n-ph="search" placeholder="搜索名称 / 家族 / 资源文件名…" autocomplete="off">
     </label>
-    <select id="fam"><option value="">全部家族</option></select>
+    <select id="fam"><option value="" data-i18n="famAll">全部家族</option></select>
     <select id="sort">
-      <option value="idx">按游戏内序号</option>
-      <option value="date-desc">日期：新 → 旧</option>
-      <option value="date-asc">日期：旧 → 新</option>
-      <option value="name">名称 A → Z</option>
-      <option value="fam">家族分组</option>
+      <option value="idx" data-i18n="sortIdx">按游戏内序号</option>
+      <option value="date-desc" data-i18n="sortDateDesc">日期：新 → 旧</option>
+      <option value="date-asc" data-i18n="sortDateAsc">日期：旧 → 新</option>
+      <option value="name" data-i18n="sortName">名称 A → Z</option>
+      <option value="fam" data-i18n="sortFam">家族分组</option>
     </select>
-    <button class="tgl gold" id="t-ex" title="仅看限定/绝版表情">★ 限定</button>
-    <button class="tgl" id="t-do" title="仅看开局默认拥有">默认拥有</button>
-    <button class="tgl" id="t-snd" title="开关表情音效：点击卡片或 🔊 按钮时播放">♫ 音效</button>
-    <button class="clear" id="reset">重置</button>
+    <button class="tgl gold" id="t-ex" data-i18n="tEx" data-i18n-title="tExTip" title="仅看限定/绝版表情">★ 限定</button>
+    <button class="tgl" id="t-do" data-i18n="own" data-i18n-title="ownTip" title="仅看开局默认拥有">默认拥有</button>
+    <button class="tgl" id="t-snd" data-i18n="snd" data-i18n-title="sndTip" title="开关表情音效：点击卡片或 🔊 按钮时播放">♫ 音效</button>
+    <div class="grp" role="group" data-i18n-aria="langLabel"><button class="tgl" id="l-zh" title="中文">中</button><button class="tgl" id="l-en" title="English">EN</button></div>
+    <button class="clear" id="reset" data-i18n="reset">重置</button>
     <div class="years" id="years"></div>
   </div>
 </nav>
 
 <main class="wrap">
   <div class="bar">
-    <div class="n" id="count">表情收录截止到2026年6月。</div>
-    <div class="tip"></div>
+    <div class="n" id="count"></div>
+    <div class="tip" data-i18n="countNote">表情收录截止到2026年6月。</div>
   </div>
   <div class="grid" id="grid"></div>
-  <div class="empty" id="empty" style="display:none">没有符合条件的表情，试试放宽筛选条件。</div>
+  <div class="empty" id="empty" data-i18n="empty" style="display:none">没有符合条件的表情，试试放宽筛选条件。</div>
 </main>
 
 <footer class="wrap">
@@ -252,10 +312,10 @@ footer code{background:#eef1f8;padding:1.5px 5px;border-radius:5px;font-size:12p
   <div class="lb-bg" data-close></div>
   <div class="lb-panel" role="dialog" aria-modal="true">
     <div class="lb-nav">
-      <button id="prev" title="上一个 (←)">‹</button>
-      <button id="next" title="下一个 (→)">›</button>
-      <button id="lb-snd" title="重播音效 (S)">♫</button>
-      <button data-close title="关闭 (Esc)">✕</button>
+      <button id="prev" data-i18n-title="prev" title="上一个 (←)">‹</button>
+      <button id="next" data-i18n-title="next" title="下一个 (→)">›</button>
+      <button id="lb-snd" data-i18n-title="sndReplay" title="重播音效 (S)">♫</button>
+      <button data-close data-i18n-title="close" title="关闭 (Esc)">✕</button>
     </div>
     <div class="lb-vis" id="lb-vis"></div>
     <div class="lb-info" id="lb-info"></div>
@@ -330,8 +390,8 @@ audio.addEventListener('error', stopSfx);
   document.getElementById('lead').textContent =
     ``;
   const S=[
-    [E.length,"表情总数"],[withAnim,"可播放动画"],[withSfx,"含音效"],
-    [fams.size,"涉及家族"],[years,"年份跨度"],[ex,"限定 / 绝版"],[dated,"有上线日期"]
+    [E.length,T("stTotal")],[withAnim,T("stAnim")],[withSfx,T("stSfx")],
+    [fams.size,T("stFams")],[years,T("stYears")],[ex,T("stEx")],[dated,T("stDated")]
   ];
   document.getElementById('stats').innerHTML = S.map(([v,l],i)=>
     `<div class="stat${i===1||i===2?' warn':''}"><b>${v}</b><span>${l}</span></div>`).join('');
@@ -344,8 +404,8 @@ audio.addEventListener('error', stopSfx);
 const famCount = {};
 E.forEach(e=>{ const k=e.fg||e.f; if(k) famCount[k]=(famCount[k]||0)+1; });
 const famSorted = Object.keys(famCount).sort((a,b)=> famCount[b]-famCount[a] || a.localeCompare(b));
-document.getElementById('fam').innerHTML = '<option value="">全部家族</option>' +
-  famSorted.map(f=>`<option value="${f}">${f}${FAMZH[f]?" · "+FAMZH[f]:""} (${famCount[f]})</option>`).join('');
+document.getElementById('fam').innerHTML = '<option value="">'+T("famAll")+'</option>' +
+  famSorted.map(f=>`<option value="${f}">${f}${window.LANG==='en'?"":(FAMZH[f]?" · "+FAMZH[f]:"")} (${famCount[f]})</option>`).join('');
 const yearCount={};
 E.forEach(e=>{ if(e.y) yearCount[e.y]=(yearCount[e.y]||0)+1; });
 const yearsSorted=Object.keys(yearCount).sort();
@@ -392,15 +452,15 @@ function card(e){
   const c = fk ? famColor(fk) : "#94a3b8";
   const img = e.img
     ? `<img loading="lazy" decoding="async" src="${IMG}${e.img}" alt="${esc(e.t)}"${e.a?` data-anim="${ANIM}${e.a}" data-static="${IMG}${e.img}"`:""} onerror="this.replaceWith(mkNone())">`
-    : `<div class="none">${CROWN}<span>素材未收录</span></div>`;
+    : `<div class="none">${CROWN}<span>${T("noAsset")}</span></div>`;
   const badge = e.ex
-    ? `<div class="badge-ex" title="限定 / 绝版（Exclusive = true）">★ 限定</div>`
-    : (!e.av ? `<div class="badge-ex badge-off" title="当前不可获得（Available = false）">下架</div>` : "");
-  const play = e.a ? `<div class="badge-anim" title="鼠标悬停播放原始动画">▶</div>` : "";
+    ? `<div class="badge-ex" title="${T('exTip')}">${T("tEx")}</div>`
+    : (!e.av ? `<div class="badge-ex badge-off" title="${T('offTip')}">${T("offBadge")}</div>` : "");
+  const play = e.a ? `<div class="badge-anim" title="${T('animTip')}">▶</div>` : "";
   const snd = e.sp
-    ? `<button class="sfx-btn" data-sfx="${esc(e.sfx)}" title="播放音效：${esc(e.sfx)}" aria-label="播放音效">${SPK}</button>`
+    ? `<button class="sfx-btn" data-sfx="${esc(e.sfx)}" title="${T('sfxPlayTip',esc(e.sfx))}" aria-label="${T('sfxAria')}">${SPK}</button>`
     : "";
-  const zh = FAMZH[fk] ? `<span class="yr">${esc(FAMZH[fk])}</span>` : "";
+  const zh = (window.LANG==='en'?"":FAMZH[fk]) ? `<span class="yr">${esc(FAMZH[fk])}</span>` : "";
   return `<article class="card" tabindex="0" data-n="${esc(e.n)}" style="--hc:${c};--hb:${c}1a">
     <div class="stripe"></div>
     <div class="thumb">${badge}${play}${img}${snd}</div>
@@ -414,13 +474,13 @@ function card(e){
     </div>
   </article>`;
 }
-function mkNone(){ const d=document.createElement('div'); d.className='none'; d.innerHTML=CROWN+'<span>素材未收录</span>'; return d; }
+function mkNone(){ const d=document.createElement('div'); d.className='none'; d.innerHTML=CROWN+'<span>'+T("noAsset")+'</span>'; return d; }
 function esc(s){ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
 
 function render(){
   stopSfx();
   VIEW = E.filter(match).sort(sortList);
-  countEl.innerHTML = `显示 <b>${VIEW.length}</b> / ${E.length} 个表情`;
+  countEl.innerHTML = T('countEmotes', VIEW.length, E.length);
   emptyEl.style.display = VIEW.length ? "none" : "block";
   grid.innerHTML = VIEW.map(card).join('');
 }
@@ -480,7 +540,7 @@ grid.addEventListener('keydown', ev=>{
 /* ---------- 详情 ---------- */
 const lb = document.getElementById('lb');
 let cur = -1;
-function yn(v){ return v ? "✓ 是" : "— 否"; }
+function yn(v){ return v ? T("yes") : T("no"); }
 function openBy(i){
   if(i<0||i>=VIEW.length) return;
   cur = i; const e = VIEW[i];
@@ -488,29 +548,29 @@ function openBy(i){
     ? (e.a
       ? `<img src="${ANIM}${e.a}" alt="${esc(e.t)}" onerror="this.onerror=null;this.src='${IMG}${e.img}'">`
       : `<img src="${IMG}${e.img}" alt="${esc(e.t)}">`)
-    : `<div class="none">${CROWN}<div style="margin-top:8px">本地素材库未收录<br>该表情的精灵文件</div></div>`;
+    : `<div class="none">${CROWN}<div style="margin-top:8px">${T("noAssetLong")}</div></div>`;
   document.querySelectorAll('.tgl').forEach(()=>{});
   const tgs = [];
-  if(e.ex) tgs.push('<span class="tg g">★ 限定 / 绝版</span>');
-  if(!e.av) tgs.push('<span class="tg r">当前不可获得</span>');
-  if(e.do) tgs.push('<span class="tg b">开局默认拥有</span>');
-  if(e.ao) tgs.push('<span class="tg">可上架出售</span>');
-  if(e.cb) tgs.push('<span class="tg">水晶背景</span>');
+  if(e.ex) tgs.push('<span class="tg g">'+T("tgEx")+'</span>');
+  if(!e.av) tgs.push('<span class="tg r">'+T("tgOff")+'</span>');
+  if(e.do) tgs.push('<span class="tg b">'+T("tgOwn")+'</span>');
+  if(e.ao) tgs.push('<span class="tg">'+T("tgShop")+'</span>');
+  if(e.cb) tgs.push('<span class="tg">'+T("tgCb")+'</span>');
   const fk = e.fg || e.f;
   document.getElementById('lb-info').innerHTML = `
     <h2>${esc(e.t||e.n)}</h2>
-    <div class="lb-sub">${fk?esc(fk)+" · ":""}${FAMZH[fk]?esc(FAMZH[fk])+" · ":""}${e.d||"日期未公开"}</div>
+    <div class="lb-sub">${fk?esc(fk)+" · ":""}${window.LANG==='en'?"":(FAMZH[fk]?esc(FAMZH[fk])+" · ":"")}${e.d||T("noDate")}</div>
     <div class="lb-tags">${tgs.join('')}</div>
-    <button class="snd-play" id="lb-play" data-sfx="${esc(e.sfx)}"${e.sp?"":' disabled'}>♫ ${e.sp?"播放音效":"音效未收录"}</button>
+    <button class="snd-play" id="lb-play" data-sfx="${esc(e.sfx)}"${e.sp?"":' disabled'}>♫ ${e.sp?T("playSfx"):T("noSfx")}</button>
     <dl>
-      <dt>数据名</dt><dd>${esc(e.n)}</dd>
-      <dt>家族 Key</dt><dd>${esc(e.f||"—")}</dd>
-      <dt>上线日期</dt><dd>${esc(e.d||"—")}</dd>
-      <dt>索引</dt><dd>IndexHi ${esc(e.k||"—")} / IndexLo ${esc(e.i||"—")}</dd>
-      <dt>精灵文件</dt><dd>${esc(e.sc||"—")}</dd>
-      <dt>音效文件</dt><dd>${esc(e.sfx||"—")}${e.sfx&&!e.sp?' <span style="color:#c0392b">（未收录）</span>':""}</dd>
+      <dt>${T("dataName")}</dt><dd>${esc(e.n)}</dd>
+      <dt>${T("famKey")}</dt><dd>${esc(e.f||"—")}</dd>
+      <dt>${T("date")}</dt><dd>${esc(e.d||"—")}</dd>
+      <dt>${T("index")}</dt><dd>IndexHi ${esc(e.k||"—")} / IndexLo ${esc(e.i||"—")}</dd>
+      <dt>${T("spriteFile")}</dt><dd>${esc(e.sc||"—")}</dd>
+      <dt>${T("sfxFile")}</dt><dd>${esc(e.sfx||"—")}${e.sfx&&!e.sp?' <span style="color:#c0392b">${T("notIncluded")}</span>':""}</dd>
     </dl>
-    ${e.note?`<div class="lb-note">未显示图像：${esc(e.note)}。</div>`:""}
+    ${e.note?`<div class="lb-note">${T("noImageNote",esc(e.note))}</div>`:""}
   `;
   lb.classList.add('open');
   document.body.style.overflow='hidden';
@@ -566,7 +626,7 @@ tgl('t-ex','ex'); tgl('t-do','dflt');
 const sndBtn = document.getElementById('t-snd');
 function syncSnd(){
   sndBtn.classList.toggle('on', SND.on);
-  sndBtn.textContent = SND.on ? "♫ 音效" : "♫ 静音";
+  sndBtn.textContent = T(SND.on?"sndOn":"sndOff");
   sndBtn.setAttribute('aria-pressed', SND.on ? 'true' : 'false');
   document.body.classList.toggle('snd-off', !SND.on);
 }
@@ -581,7 +641,7 @@ document.getElementById('reset').onclick = ()=>{
   document.getElementById('q').value=""; document.getElementById('fam').value="";
   document.getElementById('sort').value="idx";
   document.querySelectorAll('.ybtn.on').forEach(b=>b.classList.remove('on'));
-  document.querySelectorAll('.tgl.on:not(#t-snd)').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tgl.on:not(#t-snd):not(#l-zh):not(#l-en)').forEach(b=>b.classList.remove('on'));
   syncSnd();
   render();
 };
